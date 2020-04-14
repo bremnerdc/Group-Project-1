@@ -17,3 +17,6 @@ function reverseGeoLocationUrl(lat, lon){
 
     return baseURL + query + key;
 }
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });

@@ -1,88 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Pompiere&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Pompiere&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><i class="material-icons">explore</i><i class="fas fa-pizza-slice"></i><i
-          class="fas fa-plus"></i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/Group-Project-1/AboutUS/aboutus.html">About This Project</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="card grey-grey darken-1">
-    <div class="card-content black-text center">
-      <span class="card-title">Support Local Restaurants!</span>
-      <div class="row">
-        <form class="col s12">
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo"><i class="material-icons">explore</i><i class="fas fa-pizza-slice"></i><i class="fas fa-plus"></i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/Group-Project-1/AboutUS/aboutus.html">About This Project</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="card grey-grey darken-1">
+      <div class="card-content black-text center">
+        <span class="card-title">Support Local Restaurants!</span>
           <div class="row">
-            <div class="input-field col s6 offset-s3">
-              <i class="material-icons prefix">search</i>
-              <input id="icon_prefix" type="text" class="validate" placeholder="Search by city or zip code...">
-              <ul class="collapsible">
-                <li>
-                  <div class="collapsible-header">
-                    <i class="material-icons">place</i>
-                    Location
-                    <span class="badge">1</span></div>
-                  <div class="collapsible-body">
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </li>
-              </ul>
-              <label for="icon_prefix"></label>
-              <form>
-                <div class="file-field input-field">
-                  <input type="submit" class="btn waves-effect waves-light col s3 offset-s5" value="Submit" />
-                </div>
-              </form>
-            </div>
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6 offset-s3">
+                  <i class="material-icons prefix">search</i>
+                  <input id="icon_prefix" type="text" class="validate" placeholder="Search by city or zip code...">
+                  <ul class="collapsible">
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                  </ul>
+                    <label for="icon_prefix"></label>
+                      <form>
+                        <div class="file-field input-field">
+                            <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value = "Submit"/>
+                        </div>
+                      </form>
+                </div>            
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </div>
+          <div class="row">
+              <div class="col s6 offset-s3">
+          <form action="#">
+            <p class="range-field">
+              <input type="range" id="slider-range" min="0" max="20"/>
+            </p>
+          </form>
+          </div>
+        </div>
+          <div class="map-responsive">
+<iframe width="600" class="map" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=restaurants%20open%20for%20delivery&key=AIzaSyB9y-WmqdBR-Gbv8jGIioMPc_tIEz4TXpg" allowfullscreen></iframe>
+          </div>
     </div>
-    <div class="row">
-      <div class="col s6 offset-s3">
-        <form action="#">
-          <p class="range-field">
-            <input type="range" id="slider-range" min="0" max="20" />
-          </p>
-        </form>
-      </div>
-    </div>
-    <div class="map-responsive">
-      <iframe width="600" class="map" height="450" frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/search?q=restaurants%20open%20for%20delivery&key=AIzaSyB9y-WmqdBR-Gbv8jGIioMPc_tIEz4TXpg"
-        allowfullscreen></iframe>
-    </div>
-  </div>
-  <script src="http://maps.google.com/maps/api/js?libraries=places"></script>
-  <script>
-    var rangeSlider = document.getElementById('slider-range');
-
-    noUiSlider.create(rangeSlider, {
-      start: [1],
-      range: {
-        'min': [.5],
-        'max': [20]
-      }
-    });
-  </script>
-  <script src="api-practice.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+          <script src="http://maps.google.com/maps/api/js?libraries=places"></script>
+          <script>
+            var rangeSlider = document.getElementById('slider-range');
+            
+            noUiSlider.create(rangeSlider, {
+                start: [1],
+                range: {
+                    'min': [.5],
+                    'max': [20]
+                }
+            });
+            </script>
+          <script src="./Assets/api-practice.js"></script>
+          <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </body>
-
-</html>
+</html>  
