@@ -22,7 +22,7 @@ $(document).ready(function() {
         
           //var meal_takeaway = $("#takeaway");
           //var meal_delivery = $("#delivery");
-          var queryURL ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+          var queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
                          https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=50.724489,-3.527855&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c
 
 
@@ -37,7 +37,6 @@ $(document).ready(function() {
 
         $.ajax({
           url: queryURL,
-          dataType: "jsonp",
           method: 'GET',
       }).done(function(response){
           console.log(response);
@@ -47,12 +46,12 @@ $(document).ready(function() {
               var restaurantDiv = $("<div>");
               var card = $("<div>").addClass("card grey-grey darken-1");
               var body = $("<div>").addClass("card-content");
-              var title = $("<h5>").addClass("card-title").text(results.name[i]);
-              var p1 = $("<p>").addClass("card-text").text("address:" + results.vicinity[i]);
+              var title = $("<h5>").addClass("card-title").text(response.results[i].name);
+              var p1 = $("<p>").addClass("card-text").text("address:" + response.results[i].vicinity);
             
               // merge together and put on page
               restaurantDiv.append(card.append(body.append(title, p1)));
-              $("#restaurant.row").append(col);
+              $("#restaurant.row").append;
         }
 
           });
@@ -62,5 +61,3 @@ $(document).ready(function() {
 
 
      //may have to loop through both results.name & results.vicinity...
-
-   
