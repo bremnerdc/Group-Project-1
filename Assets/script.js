@@ -20,20 +20,20 @@ $(document).ready(function() {
           console.log("Long: " + long);
           var location = lat + "," + long;
         
-          //var meal_takeaway = $("#takeaway");
-          //var meal_delivery = $("#delivery");
+          var meal_takeaway = $("#takeaway");
+          var meal_delivery = $("#delivery");
           var queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-                         https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=50.724489,-3.527855&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c
+                        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=50.724489,-3.527855&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c
 
 
-        //if (meal_delivery.clicked === true) {
-        //queryURL =
-        //} 
-        // else if (meal_takeaway.clicked === true) {
-        // queryURL ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-        // } else {
-        // queryURL ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-        // }
+        if (meal_delivery.clicked === true) {
+        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+        } 
+        else if (meal_takeaway.clicked === true) {
+        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+        } else {
+        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+        }
 
         $.ajax({
           url: queryURL,
