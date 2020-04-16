@@ -26,3 +26,8 @@
 .map {
     margin-left: 10%;
 }
+
+#icon_prefix {
+    border: pink;
+    border-width: thick;
+}
