@@ -14,10 +14,15 @@
         method: "GET"
         }).then(function(response) {
          console.log(response.results[0].components.county);
+         var houseNo = response.results[0].components.house_number;
          var county = response.results[0].components.county;
          var road =response.results[0].components.road;
-         var state = response.results[0].components.state;
-         $("#demo").append(road ,county ,state);
+         var state = response.results[0].components.state_code;
+         var postalCode = response.results[0].components.postcode;
+         var country = response.results[0].components.country;
+         var formatted = response.results[0].formatted;
+         console.log("Address is: "  + formatted);
+         $("#demo").append(houseNo , road ,county ,state, postalCode, country);
 
     });
 }
@@ -30,6 +35,7 @@
         } else {
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
+        
     }
 
     function showPosition(position) {

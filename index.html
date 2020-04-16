@@ -36,6 +36,17 @@
                   <input id="icon_prefix" type="text" class="validate" placeholder="Search by city or zip code...">
                     <label for="icon_prefix"></label>
                     <p id="demo"></p>
+                    <div class="row">
+                      <form class="col s12">
+                        <div class="row">
+                          <div class="input-field col s6 offset-s3">
+                            <input placeholder="City or Zip Code"  type="text" class="validate">
+                            <label ></label>
+                            <a class="btn-floating pulse" onclick = "getLocation()"><i class="material-icons">location_on</i></a>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                       <form>
                         <div class="file-field input-field">
                             <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value = "Submit"/>
