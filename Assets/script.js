@@ -41,7 +41,7 @@ $(document).ready(function() {
       }).done(function(response){
           console.log(response);
           for (var i = 0; i < 20; i++) {
-            console.log(response.results[i].name)
+            console.log(response.results[2].name)
             
               var restaurantDiv = $("<div>");
               var card = $("<div>").addClass("card grey-grey darken-1");
