@@ -17,7 +17,7 @@
          var county = response.results[0].components.county;
          var road =response.results[0].components.road;
          var state = response.results[0].components.state;
-         //$("#demo").append(road ,county ,state);
+         $("#demo").append(road ,county ,state);
 
     });
 }
