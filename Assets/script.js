@@ -1,9 +1,31 @@
   
 $(document).ready(function() {
 
-    // CLICK EVENT ON SUBMIT BUTTON - AJAX CALL INSIDE
+    // LOCATION BUTTON SEARCH
+    $("#locationBtn").on("click", function (event){
+        event.preventDefault();
+        console.log("location clicked");
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported by this browser.");    
+      }
+    })
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var location = lat + "," + long;
+        searchRestaurants(location);
+    };
+
+    // RANGE DROPDOWN BUTTON ACTIVATION
+    $(".dropdown-trigger").dropdown();
+
+    // CLICK EVENT ON SUBMIT BUTTON - OPEN CAGE DATA AJAX CALL INSIDE
         $("#searchBtn").on("click", function (event) {
         event.preventDefault();
+        console.log("button clicked");
         $("#restaurants").empty();
         var userSearch = $(".validate").val();
         var cityNameQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + userSearch + "&key=3cc36a63992d44a2af35f53240a19709";
@@ -20,17 +42,43 @@ $(document).ready(function() {
             var lat = response.results[0].geometry.lat;
             var long = response.results[0].geometry.lng;
             var location = lat + "," + long;
+            searchRestaurants(location);
+        });
+    });
+
+    // MAIN SEARCH FUNCTION
+    function searchRestaurants(location) {
         
             var queryURL;
+            var searchRadius;
+
+    // RADIO BUTTONS FOR SEARCH RANGE
+        if ($("#1mile").prop("checked")) {
+            searchRadius = "1600";
+        } 
+        else if ($("#2miles").prop("checked")) {
+            searchRadius = "3200";
+        }
+        else if ($("#5miles").prop("checked")) {
+            searchRadius = "8000";
+        }
+        else if ($("#10miles").prop("checked")) {
+            searchRadius = "16000";
+        }
+        else if ($("#20miles").prop("checked")) {
+            searchRadius = "32100";
+        } else {
+            searchRadius = "10000"
+        }
 
     // RADIO BUTTONS FOR TAKEAWAY AND DELIVERY     
         if ($("#delivery").prop("checked")) {
-                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=" + searchRadius + "&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
         }
         else if ($("#takeaway").prop("checked")) {
-                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=" + searchRadius + "&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
         } else {
-                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=restaurant&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+                queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=" + searchRadius + "&type=restaurant&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
         };
   
         $.ajax({
@@ -41,6 +89,7 @@ $(document).ready(function() {
             $("#failed-search-modal").modal('open');
         
         }).done(function(response){
+            console.log(queryURL);
 
     // MODAL IF CALL GETS ZERO RESULTS
         if (response.status == "ZERO_RESULTS") {
@@ -79,8 +128,7 @@ $(document).ready(function() {
 
         }
       });
-    });
-  });     
-});
+    };
+});     
   
   

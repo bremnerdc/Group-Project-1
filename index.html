@@ -31,21 +31,61 @@
                       <label for="icon_prefix"></label>
                       <form>
                         <div class="file-field input-field">
-                            <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value = "Submit" id="searchBtn"/>
+                            <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value ="Submit" id="searchBtn"/>
                         </div>
-                        <p>
+                      </form>
+                        <div>
                           <label for="takeaway">
                             <input type="radio" id="takeaway" value="takeaway" name="option"/>
                             <span>Takeaway</span>
                           </label>
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                           <label for="delivery">
                             <input type="radio" id="delivery" value="delivery" name="option"/>
                             <span>Delivery</span>
-                          </label>
-                        </p>
-                    </form>
+                          </label> 
+                        </div>
+                        <a class="btn waves-effect waves-light" value="Location" id="locationBtn">Search by Current Location</a>
+                        <div class="col s3 offset-s5">
+                            <!-- SEARCH RANGE DROP DOWN -->
+                        <a class='dropdown-trigger btn' data-target='dropdown1'>Range</a>
+
+                        <ul id='dropdown1' class='dropdown-content'>
+                          <li>
+                            <label for="1mile">
+                              <input type="radio" id="1mile" value="1mile" name="range"/>
+                              <span>1 Mile</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="2miles">
+                              <input type="radio" id="2miles" value="2miles" name="range"/>
+                              <span>2 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="5miles">
+                              <input type="radio" id="5miles" value="5miles" name="range"/>
+                              <span>5 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="10miles">
+                              <input type="radio" id="10miles" value="10miles" name="range"/>
+                              <span>10 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="20miles">
+                              <input type="radio" id="20miles" value="20miles" name="range"/>
+                              <span>20 Miles</span>
+                            </label>
+                          </li>
+                        </ul>
+                        <!-- END OF SEARCH RANGE DROP DOWN -->
+                      </div>
+                    
                     </div>            
                     </div>
                     </form>
@@ -73,15 +113,15 @@
                     <!-- END MODAL -->
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
               <div class="col s6 offset-s3">
           <form action="#">
             <p class="range-field">
-              <input type="range" id="slider-range" min="0" max="20"/>
+              <input type="range" id="slider-range" min="1" max="20"/>
             </p>
           </form>
           </div>
-        </div>
+        </div> -->
         <!-- <div class="map-responsive">
           <iframe width="600" class="map" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=open%20restaurants%20near%20me&key=AIzaSyB9y-WmqdBR-Gbv8jGIioMPc_tIEz4TXpg" allowfullscreen></iframe>
                     </div> -->
