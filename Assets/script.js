@@ -5,6 +5,7 @@ $(document).ready(function() {
     $("#locationBtn").on("click", function (event){
         event.preventDefault();
         console.log("location clicked");
+        $("#restaurants").empty();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
