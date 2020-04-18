@@ -44,7 +44,9 @@
         
         }).done(function(response){
             var lat = response.results[0].geometry.lat;
+            myCurLat = lat;
             var long = response.results[0].geometry.lng;
+            myCurLong = long;
             var location = lat + "," + long;
             searchRestaurants(location);
         });
