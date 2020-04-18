@@ -7,53 +7,54 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Pompiere&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cinzel:700|Courgette|Delius+Unicase:700|Righteous|Vast+Shadow&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo"><i class="material-icons">explore</i><i class="fas fa-pizza-slice"></i><i class="fas fa-plus"></i></a>
+        <div class="nav-wrapper transparent"> 
+          <a href="#" class="brand-logo"><img src="./assets/food-delivery-app.png"></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/Group-Project-1/AboutUS/aboutus.html">About This Project</a></li>
+            <li><a href="/Group-Project-1/AboutUS/aboutus.html"><a class="waves-effect indigo lighten-2 waves-light btn">About This Project</a></a></li>
           </ul>
         </div>
       </nav>
           <div class="card grey-grey darken-1">
             <div class="card-content black-text center">
-              <span class="card-title">Support Local Restaurants!</span>
+              <span class="card-title"><h5>Support Local Restaurants!</h5></span>
               <div class="row">
                 <form class="col s12">
                   <div class="row">
-                    <div class="input-field col s6 offset-s3">
+                    <div class="input-field col m12 l6 offset-l3">
                       <i class="material-icons prefix">search</i>
                       <input id="icon_prefix" type="text" class="validate" placeholder="Search by city or zip code..." id="locationSearch">
                       <label for="icon_prefix"></label>
                       <form>
+                        <div class="row">
                         <div class="file-field input-field">
-                            <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value ="Submit" id="searchBtn"/>
+                            <input type ="submit" class ="btn waves-effect waves-light indigo lighten-2 col s12 m12 l4" value ="Submit" id="searchBtn"/>
                         </div>
                       </form>
-                        <div>
-                          <label for="takeaway">
+                          <label for="takeaway" class="col m6 l4">
                             <input type="radio" id="takeaway" value="takeaway" name="option"/>
-                            <span>Takeaway</span>
+                            <span>Takeaway <i class="fas fa-drumstick-bite"></i></span>
                           </label>
-                        </div>
                         <div>
-                          <label for="delivery">
-                            <input type="radio" id="delivery" value="delivery" name="option"/>
-                            <span>Delivery</span>
+                          <label for="delivery" class="col m6 l4">
+                            <input type="radio" class="indigo lighten-2" id="delivery" value="delivery" name="option"/>
+                            <span>Delivery <i class="fas fa-shipping-fast"></i></span>
                           </label> 
                         </div>
-                        <div>
-                          <a class="btn waves-effect waves-light" value="Location" id="locationBtn">Search by Current Location</a>
                         </div>
-                        <div>
+                        <div class="row">
+                          <div class="row">
+                          <a class="btn waves-effect indigo lighten-2 waves-light col s12 m12 l5 offset-l1" value="Location" id="locationBtn">Search by &nbsp; &nbsp;<i class="fas fa-map-marker-alt"></i></a>
+                        <!-- <div> -->
                         <!-- SEARCH RANGE DROP DOWN -->
-                        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Search Range</a>
-
-                        <ul id='dropdown1' class='dropdown-content'>
+                        <a class='dropdown-trigger indigo lighten-2 btn col s12 m12 l5 offset-l1' href='#' data-target='dropdown1' id="searchRange">Search Range</a>
+                        </form>
+                      </div>
+                         <ul id='dropdown1' class='dropdown-content'>
                           <li>
                             <label for="1mile">
                               <input type="radio" id="1mile" value="1mile" name="range"/>
@@ -87,10 +88,9 @@
                         </ul>
                         <!-- END OF SEARCH RANGE DROP DOWN -->
                       </div>
-                    
                     </div>            
                     </div>
-                    </form>
+                    <!-- </form> -->
                     <!-- NO RESULTS MODAL -->
                     <div id="no-results-modal" class="modal">
                       <div class="modal-content">

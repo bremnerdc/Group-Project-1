@@ -107,12 +107,12 @@ $(document).ready(function() {
 
     // CREATING RESTAURANT RESULT ELEMENTS
         var restaurantColDiv = $("<div class='col s12 m6 l6'></div>");
-        var restaurantDiv = $("<div class='card-panel teal lighten-5'></div>");
+        var restaurantDiv = $("<div class='card-panel indigo lighten-2'></div>");
         var restaurantNameEl = $("<span class='card-title'  id='restaurant-header'>" + name + "</span>");
         var openNowEl = $("<p>OPEN NOW</p>");
         var ratingEl = $("<p>Google rating: " + rating + " / 5" + "</p>");
         var addressEl = $("<p>Address: " + address + "</p>");
-        var restaurantContentDiv = $("<div class='card-content black-text'></div>");
+        var restaurantContentDiv = $("<div class='card-content white-text'></div>");
         var encodedAddress = encodeURIComponent(address);
         var link = "https://www.google.com/maps/dir/?api=1&destination=" + encodedAddress
         var directionsLink = $("<a target='_blank' href=" + link + ">Directions</a>");
