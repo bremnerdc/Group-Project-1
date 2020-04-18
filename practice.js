@@ -1,7 +1,7 @@
 
 
   var latitude , longtitude;
-  var myCurLat, myCurLong;
+  var myCurLat, myCurLong;    //***** */
     // LOCATION BUTTON SEARCH
     $("#locationBtn").on("click", function (event){
         event.preventDefault();
@@ -16,9 +16,9 @@
 
     function showPosition(position) {
         var lat = position.coords.latitude;
-        myCurLat = lat;
+        myCurLat = lat;   //***** */
         var long = position.coords.longitude;
-        myCurLong = long;
+        myCurLong = long;    //***** */
         var location = lat + "," + long;
         searchRestaurants(location);
     };
@@ -44,9 +44,9 @@
         
         }).done(function(response){
             var lat = response.results[0].geometry.lat;
-            myCurLat = lat;
+            myCurLat = lat;    //***** */
             var long = response.results[0].geometry.lng;
-            myCurLong = long;
+            myCurLong = long;    //***** */
             var location = lat + "," + long;
             searchRestaurants(location);
         });
@@ -104,7 +104,7 @@
         }
 
     // CREATING VARIABLES FROM JSON OBJECT RESULTS
-        var myLatlng = new google.maps.LatLng(myCurLat, myCurLong);
+        var myLatlng = new google.maps.LatLng(myCurLat, myCurLong);  //***** */
         var myOptions = {
             zoom: 8,
             center: myLatlng,
@@ -119,7 +119,8 @@
                 url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             }
         });
-        marker.setMap(map);
+        marker.setMap(map);  
+        //   until here map function  //***** */
 
         for (var i = 0; i < response.results.length; i++) {
         var name = response.results[i].name;
@@ -129,7 +130,7 @@
         var longtitude = response.results[i].geometry.location.lng;  
         console.log(latitude);
         console.log(longtitude) 
-        plotPoint(map, latitude,longtitude,name);
+        plotPoint(map, latitude,longtitude,name);    //***** */
     // CREATING RESTAURANT RESULT ELEMENTS
         var restaurantColDiv = $("<div class='col s12 m6 l6'></div>");
         var restaurantDiv = $("<div class='card-panel teal lighten-5'></div>");
@@ -156,14 +157,14 @@
       });
     };
     
-    function plotPoint(map, lat, lng, name) {
+    function plotPoint(map, lat, lng, name) { // //***** COPY  UNTIL THE END CROSS CHECK WITH GRANT CODE*/
         var myLatlng = new google.maps.LatLng(lat, lng);
         var marker = new google.maps.Marker({
             position: myLatlng,
             title:name
         });
         marker.setMap(map);
-    }
+    }  
     
        // var map = new google.maps.Map($('#my_map')[0], mapOptions);
         // var customMarker = new google.maps.Marker({
@@ -208,3 +209,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+// copy untilthe end 
