@@ -78,19 +78,6 @@ h4 {
 li {
     color: #3f51b5 !important;
 }
-.map-responsive{
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
-}
-.map-responsive iframe{
-    left:0;
-    top:0;
-    height:80%;
-    width:80%;
-    position:absolute;
-}
 .map {
     margin-left: 10%;
 }
