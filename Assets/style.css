@@ -1,14 +1,27 @@
 .brand-logo {
-    margin-left: 10px;;
+    margin-left: 10px;
+    image-rendering: pixelated;
+}
+
+body {
+    background-image: url(../Assets/restaurant-tea-counter-menu.jpg);
+}
+nav {
+    background-color: transparent !important;
+}
+
+#radio {
+    background-color: #3f51b5 !important;
 }
 .card {
     margin-left: 20%;
     margin-right: 20%;
     padding-bottom: 30%;
 }
+
 .card-title {
     font-weight: bolder !important;
-    font-family: 'Arima Madurai', cursive !important;
+    font-family: 'Righteous', cursive !important;
 }
 .map-responsive{
     overflow:hidden;
@@ -31,3 +44,21 @@
     border: pink;
     border-width: thick;
 }
+
+#searchBtn {
+    margin: auto;
+    color: white;
+}
+
+#searchRange {
+    padding-bottom: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* #locationBtn {
+    margin: .5%;
+} */
