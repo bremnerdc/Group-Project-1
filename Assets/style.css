@@ -43,6 +43,7 @@ nav {
 #icon_prefix {
     border: pink;
     border-width: thick;
+<<<<<<< HEAD
 }
 
 #searchBtn {
@@ -57,3 +58,6 @@ nav {
 /* #locationBtn {
     margin: .5%;
 } */
+=======
+}
+>>>>>>> dylan_branch
