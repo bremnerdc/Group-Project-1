@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,14 +35,14 @@
                             <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value = "Submit" id="searchBtn"/>
                         </div>
                         <p>
-                          <label>
-                            <input type="checkbox" id="takeaway" class="filled-in" checked="checked" />
+                          <label for="takeaway">
+                            <input type="radio" id="takeaway" value="takeaway" name="option"/>
                             <span>Takeaway</span>
                           </label>
                         </p>
                         <p>
-                          <label>
-                            <input type="checkbox" id="delivery" class="filled-in" checked="checked" />
+                          <label for="delivery">
+                            <input type="radio" id="delivery" value="delivery" name="option"/>
                             <span>Delivery</span>
                           </label>
                         </p>
@@ -49,6 +50,28 @@
                     </div>            
                     </div>
                     </form>
+                    <!-- NO RESULTS MODAL -->
+                    <div id="no-results-modal" class="modal">
+                      <div class="modal-content">
+                        <h4>No Results Found</h4>
+                        <p>Please try searching again with a different city or zip code. Or, search by current location.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                      </div>
+                    </div>
+                    <!-- END MODAL -->
+                    <!-- FAILED SEARCH MODAL -->
+                     <div id="failed-search-modal" class="modal">
+                      <div class="modal-content">
+                        <h4>Restaurant Search Failed</h4>
+                        <p>Whoops, something went wrong. Please try again!</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                      </div>
+                    </div>
+                    <!-- END MODAL -->
             </div>
           </div>
           <div class="row">
@@ -59,40 +82,32 @@
             </p>
           </form>
           </div>
-          
         </div>
+        <div id="mapCanvas"></div>
         <!-- <div class="map-responsive">
           <iframe width="600" class="map" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=open%20restaurants%20near%20me&key=AIzaSyB9y-WmqdBR-Gbv8jGIioMPc_tIEz4TXpg" allowfullscreen></iframe>
                     </div> -->
+        </div>
+        <div class="card grey-grey darken-1">
+          <div class="row" id="restaurants">
           </div>
-          <div class="col s12 m7">
-            <h2 class="header">Horizontal Card</h2>
-            <div class="card horizontal">
-              <div class="card-stacked">
-                <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
+          
           <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-          <script src=./assets/api-practice.js></script>
           <!-- <script src="http://maps.google.com/maps/api/js?libraries=places"></script> -->
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
           <script src="./assets/script.js"></script>
           <script>
-            // var rangeSlider = document.getElementById('slider-range');
             
-            // noUiSlider.create(rangeSlider, {
-            //     start: [1],
-            //     range: {
-            //         'min': [.5],
-            //         'max': [20]
-            //     }
-            // });
-            </script>
+            function gMaps() {
+            var map = new google.maps.places.RankBy(document.getElementbyID)("mapCanvas"), {
+              center: new google.maps.LatLng(47.675301, -122.382172),
+              mapTypeId: google.MapTypeId.ROADMAP,
+              zoom: 8
+            });
+
+          </script>
+          
 </body>
-</html>  
+</html> 

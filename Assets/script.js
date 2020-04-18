@@ -1,63 +1,83 @@
 $(document).ready(function() {
 
   // CLICK EVENT ON SUBMIT BUTTON - AJAX CALL INSIDE
-  $("#searchBtn").on("click", function (event) {
+      $("#searchBtn").on("click", function (event) {
       event.preventDefault();
-      console.log("button clicked");
+      $("#restaurants").empty();
       var userSearch = $(".validate").val();
-      console.log(userSearch);
       var cityNameQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + userSearch + "&key=3cc36a63992d44a2af35f53240a19709";
   
   // AJAX CALL FROM USER INPUT (CITY NAME/ZIP CODE) TO GRAB LATITUDE AND LONGITUDE 
       $.ajax({
           url: cityNameQueryURL,
           method: 'GET',
+      }).fail(function(response){
+          $(".modal").modal();
+          $("#failed-search-modal").modal('open');
+      
       }).done(function(response){
-          console.log(response);
           var lat = response.results[0].geometry.lat;
-          console.log("Lat: " + lat);
           var long = response.results[0].geometry.lng;
-          console.log("Long: " + long);
           var location = lat + "," + long;
-        
-          var meal_takeaway = $("#takeaway");
-          var meal_delivery = $("#delivery");
-          var queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-                        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=50.724489,-3.527855&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c
+      
+          var queryURL;
 
+  // RADIO BUTTONS FOR TAKEAWAY AND DELIVERY     
+      if ($("#delivery").prop("checked")) {
+              queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+      }
+      else if ($("#takeaway").prop("checked")) {
+              queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+      } else {
+              queryURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=restaurant&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
+      };
 
-        if (meal_delivery.clicked === true) {
-        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-        } 
-        else if (meal_takeaway.clicked === true) {
-        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-        } else {
-        queryURL ="https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + location + "&radius=10000&type=meal_delivery&type=meal_takeaway&opennow=true&key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c";
-        }
-
-        $.ajax({
+      $.ajax({
           url: queryURL,
           method: 'GET',
+      }).fail(function(response){
+          $(".modal").modal();
+          $("#failed-search-modal").modal('open');
+      
       }).done(function(response){
-          console.log(response);
-          for (var i = 0; i < 20; i++) {
-            console.log(response.results[2].name)
+
+  // MODAL IF CALL GETS ZERO RESULTS
+      if (response.status == "ZERO_RESULTS") {
+              $(".modal").modal();
+              $("#no-results-modal").modal('open');
+      }
+
+  // CREATING VARIABLES FROM JSON OBJECT RESULTS 
+      for (var i = 0; i < response.results.length; i++) {
+      var name = response.results[i].name;
+      var rating = response.results[i].rating;
+      var address = response.results[i].vicinity;
             
-              var restaurantDiv = $("<div>");
-              var card = $("<div>").addClass("card grey-grey darken-1");
-              var body = $("<div>").addClass("card-content");
-              var title = $("<h5>").addClass("card-title").text(response.results[i].name);
-              var p1 = $("<p>").addClass("card-text").text("address:" + response.results[i].vicinity);
-            
-              // merge together and put on page
-              restaurantDiv.append(card.append(body.append(title, p1)));
-              $("#restaurant.row").append;
-        }
 
-          });
-        });
-        });
-      });
+  // CREATING RESTAURANT RESULT ELEMENTS
+      var restaurantColDiv = $("<div class='col s12 m6 l6'></div>");
+      var restaurantDiv = $("<div class='card-panel teal lighten-5'></div>");
+      var restaurantNameEl = $("<span class='card-title'  id='restaurant-header'>" + name + "</span>");
+      var openNowEl = $("<p>OPEN NOW</p>");
+      var ratingEl = $("<p>Google rating: " + rating + " / 5" + "</p>");
+      var addressEl = $("<p>Address: " + address + "</p>");
+      var restaurantContentDiv = $("<div class='card-content black-text'></div>");
+      var encodedAddress = encodeURIComponent(address);
+      var link = "https://www.google.com/maps/dir/?api=1&destination=" + encodedAddress
+      var directionsLink = $("<a target='_blank' href=" + link + ">Directions</a>");
 
+  // APPENDING RESTAURANT ELEMENTS TO PAGE
+      restaurantDiv.append(restaurantContentDiv);
+      restaurantColDiv.append(restaurantDiv);
+      restaurantContentDiv.append(restaurantNameEl);
+      restaurantContentDiv.append(openNowEl);
+      restaurantContentDiv.append(ratingEl);
+      restaurantContentDiv.append(addressEl);
+      restaurantContentDiv.append(directionsLink);
+      $("#restaurants").append(restaurantColDiv);
 
-     //may have to loop through both results.name & results.vicinity...
+      }
+    });
+  });
+});     
+});
