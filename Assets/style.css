@@ -33,6 +33,12 @@
     font-weight: bold;
 }
 #map {
-height: 400px;  /* The height is 400 pixels */
-width: 100%;  /* The width is the width of the web page */
-}
+    height: 400px;
+    width:400px;
+    position: relative;
+    margin: 50px 50px 50px 50px;
+    padding: 10px;
+   
+
+  }
+  

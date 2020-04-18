@@ -1,64 +1,152 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <title>Practice</title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <style>
-        #map {
-          width: 100%;
-          height: 400px;
-          background-color: grey;
-        }
-      </style>
-    <!--  <script src="Assets/api-practice.js"></script>  -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Pompiere&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
-    <button data-target="modal1" class="btn modal-trigger">Modal</button>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo"><i class="material-icons">explore</i><i class="fas fa-pizza-slice"></i><i class="fas fa-plus"></i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/Group-Project-1/AboutUS/aboutus.html">About This Project</a></li>
+          </ul>
+        </div>
+      </nav>
+          <div class="card grey-grey darken-1">
+            <div class="card-content black-text center">
+              <span class="card-title">Support Local Restaurants!</span>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s6 offset-s3">
+                      <i class="material-icons prefix">search</i>
+                      <input id="icon_prefix" type="text" class="validate" placeholder="Search by city or zip code..." id="locationSearch">
+                      <label for="icon_prefix"></label>
+                      <form>
+                        <div class="file-field input-field">
+                            <input type ="submit" class ="btn waves-effect waves-light col s3 offset-s5" value ="Submit" id="searchBtn"/>
+                        </div>
+                      </form>
+                        <div>
+                          <label for="takeaway">
+                            <input type="radio" id="takeaway" value="takeaway" name="option"/>
+                            <span>Takeaway</span>
+                          </label>
+                        </div>
+                        <div>
+                          <label for="delivery">
+                            <input type="radio" id="delivery" value="delivery" name="option"/>
+                            <span>Delivery</span>
+                          </label> 
+                        </div>
+                        <div>
+                          <a class="btn waves-effect waves-light" value="Location" id="locationBtn">Search by Current Location</a>
+                        </div>
+                        <div>
+                        <!-- SEARCH RANGE DROP DOWN -->
+                        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Search Range</a>
 
+                        <ul id='dropdown1' class='dropdown-content'>
+                          <li>
+                            <label for="1mile">
+                              <input type="radio" id="1mile" value="1mile" name="range"/>
+                              <span>1 Mile</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="2miles">
+                              <input type="radio" id="2miles" value="2miles" name="range"/>
+                              <span>2 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="5miles">
+                              <input type="radio" id="5miles" value="5miles" name="range"/>
+                              <span>5 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="10miles">
+                              <input type="radio" id="10miles" value="10miles" name="range"/>
+                              <span>10 Miles</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label for="20miles">
+                              <input type="radio" id="20miles" value="20miles" name="range"/>
+                              <span>20 Miles</span>
+                            </label>
+                          </li>
+                        </ul>
+                        <!-- END OF SEARCH RANGE DROP DOWN -->
+                      </div>
+                    
+                    </div>            
+                    </div>
+                    </form>
+                    <!-- NO RESULTS MODAL -->
+                    <div id="no-results-modal" class="modal">
+                      <div class="modal-content">
+                        <h4>No Results Found</h4>
+                        <p>Please try searching again with a different city or zip code. Or, search by current location.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                      </div>
+                    </div>
+                    <!-- END MODAL -->
+                    <!-- FAILED SEARCH MODAL -->
+                     <div id="failed-search-modal" class="modal">
+                      <div class="modal-content">
+                        <h4>Restaurant Search Failed</h4>
+                        <p>Whoops, something went wrong. Please try again!</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                      </div>
+                    </div>
+                    <!-- END MODAL -->
+            </div>
+            
+          </div>
+
+  <div id="map"></div>
+  
+          
+          <!-- <div class="row">
+              <div class="col s6 offset-s3">
+          <form action="#">
+            <p class="range-field">
+              <input type="range" id="slider-range" min="1" max="20"/>
+            </p>
+          </form>
+          </div>
+        </div> -->
+        <!-- <div class="map-responsive">
+          <iframe width="600" class="map" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=open%20restaurants%20near%20me&key=AIzaSyB9y-WmqdBR-Gbv8jGIioMPc_tIEz4TXpg" allowfullscreen></iframe>
+                    </div> -->
+        </div>
+        <div class="card grey-grey darken-1">
+          <div class="row" id="restaurants">
+          </div>
+        </div>
+          
+          <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+          <!-- <script src="http://maps.google.com/maps/api/js?libraries=places"></script> -->
+         
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          <script src="practice.js"></script>
+          <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c&callback=initMap">
+          </script> 
+          
 </body>
-    <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: 47.850787, lng: -122.9855};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems,options);
-  });
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApNMnp_rkqJzxJaSxvpit0MvEhVw1vm7c&callback=initMap">
-    </script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
-</html>
-      <script src = "practice.js"></script>
-</body>
-
-</html>
+</html>  
